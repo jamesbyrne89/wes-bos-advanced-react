@@ -1,6 +1,24 @@
 import Link from 'next/link';
-import Nav from './Nav';
+import Router from 'next/router';
+import NProgress from 'nprogress';
 import styled from 'styled-components';
+import Nav from './Nav';
+
+const onRouteChangeStart = () => {
+  NProgress.start();
+};
+
+const onRouteChangeComplete = () => {
+  NProgress.done();
+};
+
+const onRouteChangeError = () => {
+  console.log('routeChangeError');
+};
+
+Router.events.on('routeChangeStart', onRouteChangeStart);
+Router.events.on('routeChangeComplete', onRouteChangeComplete);
+Router.events.on('routeChangeError', onRouteChangeError);
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -11,9 +29,13 @@ const Logo = styled.h1`
   a {
     padding: 0.5rem 1rem;
     background: ${props => props.theme.red};
-    color: #fff;
+    color: white;
     text-transform: uppercase;
     text-decoration: none;
+  }
+  @media (max-width: 1300px) {
+    margin: 0;
+    text-align: center;
   }
 `;
 
