@@ -1,9 +1,12 @@
 const Mutations = {
-  createDog(parent, args, context, info) {
-    global.dogs = global.dogs || [];
-    const newDog = { name: args.name };
-    global.dogs.push(newDog);
-    return newDog;
+  async createItem(parent, args, context, info) {
+    console.log(context.db);
+    const item = await context.db.mutation.createItem(
+      { data: { ...args } },
+      info
+    );
+    console.log({ item });
+    return item;
   }
 };
 

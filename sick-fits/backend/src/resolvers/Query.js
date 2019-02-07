@@ -1,6 +1,6 @@
 const Query = {
-  dogs(parent, args, context, info) {
-    return global.dogs || [];
+  items(parent, args, context, info) {
+    return [{ ...args }];
   }
 };
 
