@@ -1,6 +1,6 @@
 const Query = {
-  items(parent, args, context, info) {
-    return [{ ...args }];
+  async items(parent, args, context, info) {
+    const items = await context.db.query.item();
   }
 };
 

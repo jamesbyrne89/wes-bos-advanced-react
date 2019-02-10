@@ -17,6 +17,9 @@ server.start(
     }
   },
   details => {
-    console.log(`Server started at http://localhost/${details.port}`);
+    console.log(
+      '\x1b[35m',
+      `Server started at http://localhost/${details.port}`
+    );
   }
 );
